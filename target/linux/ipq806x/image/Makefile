@@ -73,6 +73,22 @@ define Device/ZyXELImage
 	IMAGE/mmcblk0p4-kernel.bin := append-kernel
 endef
 
+define Device/8dev_jalapeno
+	$(call Device/FitImage)
+	$(call Device/UbiFit)
+	DEVICE_DTS := qcom-ipq4019-jalapeno
+	KERNEL_LOADADDR := 0x80208000
+	KERNEL_INSTALL := 1
+	KERNEL_SIZE := 4048k
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	BOARD_NAME := jalapeno
+	SUPPORTED_DEVICES := 8dev,jalapeno
+	DEVICE_TITLE := 8devices Jalapeno
+	DEVICE_PACKAGES := ath10k-firmware-qca4019 uboot-envtools
+endef
+TARGET_DEVICES += 8dev_jalapeno
+
 define Device/avm_fritzbox-4040
 	$(call Device/FitImageLzma)
 	DEVICE_DTS := qcom-ipq4019-fritz4040
