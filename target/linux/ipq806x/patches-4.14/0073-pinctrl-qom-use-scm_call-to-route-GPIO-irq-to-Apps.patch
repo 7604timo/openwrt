@@ -21,9 +21,9 @@ Signed-off-by: Ajay Kishore <akisho@codeaurora.org>
 
 --- a/drivers/firmware/qcom_scm-32.c
 +++ b/drivers/firmware/qcom_scm-32.c
-@@ -560,3 +560,21 @@ int __qcom_scm_pas_mss_reset(struct devi
- 
- 	return ret ? : le32_to_cpu(out);
+@@ -596,3 +596,21 @@ int __qcom_scm_iommu_secure_ptbl_init(st
+ {
+ 	return -ENODEV;
  }
 +
 +int __qcom_scm_pinmux_read(u32 svc_id, u32 cmd_id, u32 arg1)
@@ -40,14 +40,14 @@ Signed-off-by: Ajay Kishore <akisho@codeaurora.org>
 +	s32 ret;
 +
 +	ret = qcom_scm_call_atomic2(svc_id, cmd_id, arg1, arg2);
-+ 
++
 + return ret;
 + }
 --- a/drivers/firmware/qcom_scm-64.c
 +++ b/drivers/firmware/qcom_scm-64.c
-@@ -365,3 +365,12 @@ int __qcom_scm_pas_mss_reset(struct devi
+@@ -439,3 +439,12 @@ int __qcom_scm_iommu_secure_ptbl_init(st
  
- 	return ret ? : res.a1;
+ 	return ret;
  }
 +int __qcom_scm_pinmux_read(u32 svc_id, u32 cmd_id, u32 arg1)
 +{
@@ -60,7 +60,7 @@ Signed-off-by: Ajay Kishore <akisho@codeaurora.org>
 +}
 --- a/drivers/firmware/qcom_scm.c
 +++ b/drivers/firmware/qcom_scm.c
-@@ -443,3 +443,16 @@ static int __init qcom_scm_init(void)
+@@ -467,3 +467,16 @@ static int __init qcom_scm_init(void)
  	return platform_driver_register(&qcom_scm_driver);
  }
  subsys_initcall(qcom_scm_init);
@@ -79,7 +79,7 @@ Signed-off-by: Ajay Kishore <akisho@codeaurora.org>
 +EXPORT_SYMBOL(qcom_scm_pinmux_write);
 --- a/drivers/firmware/qcom_scm.h
 +++ b/drivers/firmware/qcom_scm.h
-@@ -56,6 +56,13 @@ extern int  __qcom_scm_pas_auth_and_rese
+@@ -58,6 +58,13 @@ extern int  __qcom_scm_pas_auth_and_rese
  extern int  __qcom_scm_pas_shutdown(struct device *dev, u32 peripheral);
  extern int  __qcom_scm_pas_mss_reset(struct device *dev, bool reset);
  
@@ -105,7 +105,7 @@ Signed-off-by: Ajay Kishore <akisho@codeaurora.org>
  #include "../core.h"
  #include "../pinconf.h"
  #include "pinctrl-msm.h"
-@@ -635,6 +636,9 @@ static int msm_gpio_irq_set_type(struct
+@@ -663,6 +664,9 @@ static int msm_gpio_irq_set_type(struct
  	const struct msm_pingroup *g;
  	unsigned long flags;
  	u32 val;
@@ -115,7 +115,7 @@ Signed-off-by: Ajay Kishore <akisho@codeaurora.org>
  
  	g = &pctrl->soc->groups[d->hwirq];
  
-@@ -648,11 +652,30 @@ static int msm_gpio_irq_set_type(struct
+@@ -676,11 +680,30 @@ static int msm_gpio_irq_set_type(struct
  	else
  		clear_bit(d->hwirq, pctrl->dual_edge_irqs);
  
@@ -150,17 +150,19 @@ Signed-off-by: Ajay Kishore <akisho@codeaurora.org>
  
  	/* Update configuration for gpio.
  	 * RAW_STATUS_EN is left on for all gpio irqs. Due to the
-@@ -926,4 +949,3 @@ int msm_pinctrl_remove(struct platform_d
+@@ -954,4 +977,3 @@ int msm_pinctrl_remove(struct platform_d
  	return 0;
  }
  EXPORT_SYMBOL(msm_pinctrl_remove);
 -
 --- a/include/linux/qcom_scm.h
 +++ b/include/linux/qcom_scm.h
-@@ -46,4 +46,6 @@ extern void qcom_scm_cpu_power_down(u32
- 
+@@ -40,6 +40,8 @@ extern int qcom_scm_pas_shutdown(u32 per
+ extern void qcom_scm_cpu_power_down(u32 flags);
  extern u32 qcom_scm_get_version(void);
- 
+ extern int qcom_scm_set_remote_state(u32 state, u32 id);
 +extern s32 qcom_scm_pinmux_read(u32 arg1);
 +extern s32 qcom_scm_pinmux_write(u32 arg1, u32 arg2);
- #endif
+ extern int qcom_scm_restore_sec_cfg(u32 device_id, u32 spare);
+ extern int qcom_scm_iommu_secure_ptbl_size(u32 spare, size_t *size);
+ extern int qcom_scm_iommu_secure_ptbl_init(u64 addr, u32 size, u32 spare);

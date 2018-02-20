@@ -59,7 +59,7 @@ Signed-off-by: Thomas Pedersen <twp@codeaurora.org>
  
  Example:
  
-@@ -56,7 +52,7 @@ Example:
+@@ -55,7 +51,7 @@ Example:
  
  		cs-gpios = <&qcom_pinmux 20 0>;
  

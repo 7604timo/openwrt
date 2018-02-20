@@ -1,6 +1,6 @@
 --- a/arch/arm/boot/dts/qcom-ipq4019-ap.dk01.1.dtsi
 +++ b/arch/arm/boot/dts/qcom-ipq4019-ap.dk01.1.dtsi
-@@ -15,12 +15,39 @@
+@@ -15,6 +15,7 @@
   */
  
  #include "qcom-ipq4019.dtsi"
@@ -8,9 +8,10 @@
  
  / {
  	model = "Qualcomm Technologies, Inc. IPQ4019/AP-DK01.1";
- 	compatible = "qcom,ipq4019";
+@@ -25,6 +26,32 @@
+ 			status = "ok";
+ 		};
  
- 	soc {
 +		tcsr@194b000 {
 +			/* select hostmode */
 +			compatible = "qcom,tcsr";

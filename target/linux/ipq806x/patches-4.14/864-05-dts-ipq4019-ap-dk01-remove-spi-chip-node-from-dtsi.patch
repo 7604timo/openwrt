@@ -1,6 +1,6 @@
 --- a/arch/arm/boot/dts/qcom-ipq4019-ap.dk01.1.dtsi
 +++ b/arch/arm/boot/dts/qcom-ipq4019-ap.dk01.1.dtsi
-@@ -89,14 +89,6 @@
+@@ -93,14 +93,6 @@
  			pinctrl-names = "default";
  			status = "ok";
  			cs-gpios = <&tlmm 54 0>;

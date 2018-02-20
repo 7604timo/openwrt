@@ -23,8 +23,8 @@ Changes:
 
 --- a/arch/arm/boot/dts/qcom-ipq4019-ap.dk01.1.dtsi
 +++ b/arch/arm/boot/dts/qcom-ipq4019-ap.dk01.1.dtsi
-@@ -108,5 +108,25 @@
- 		watchdog@b017000 {
+@@ -101,5 +101,25 @@
+ 		wifi@a800000 {
  			status = "ok";
  		};
 +
@@ -51,9 +51,9 @@ Changes:
  };
 --- a/arch/arm/boot/dts/qcom-ipq4019.dtsi
 +++ b/arch/arm/boot/dts/qcom-ipq4019.dtsi
-@@ -307,5 +307,76 @@
- 			compatible = "qcom,pshold";
- 			reg = <0x4ab000 0x4>;
+@@ -414,5 +414,76 @@
+ 					  "legacy";
+ 			status = "disabled";
  		};
 +
 +		usb3_ss_phy: ssphy@9a000 {

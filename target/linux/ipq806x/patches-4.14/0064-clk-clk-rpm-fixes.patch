@@ -12,9 +12,9 @@ Signed-off-by: John Crispin <john@phrozen.org>
 
 --- a/Documentation/devicetree/bindings/clock/qcom,rpmcc.txt
 +++ b/Documentation/devicetree/bindings/clock/qcom,rpmcc.txt
-@@ -12,6 +12,7 @@ Required properties :
- 
+@@ -13,6 +13,7 @@ Required properties :
  			"qcom,rpmcc-msm8916", "qcom,rpmcc"
+ 			"qcom,rpmcc-msm8974", "qcom,rpmcc"
  			"qcom,rpmcc-apq8064", "qcom,rpmcc"
 +			"qcom,rpmcc-ipq806x", "qcom,rpmcc"
  
@@ -89,5 +89,5 @@ Signed-off-by: John Crispin <john@phrozen.org>
 +#define RPM_NSS_FABRIC_1_CLK				24
 +#define RPM_NSS_FABRIC_1_A_CLK				25
  
- /* msm8916 */
+ /* SMD RPM clocks */
  #define RPM_SMD_XO_CLK_SRC				0

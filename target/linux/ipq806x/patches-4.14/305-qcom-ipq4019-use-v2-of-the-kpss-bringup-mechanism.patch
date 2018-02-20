@@ -67,7 +67,7 @@ Changes:
  			qcom,acc = <&acc3>;
  			qcom,saw = <&saw3>;
  			reg = <0x3>;
-@@ -212,22 +222,22 @@
+@@ -235,22 +245,22 @@
  		};
  
                  acc0: clock-controller@b088000 {
@@ -94,7 +94,7 @@ Changes:
                          reg = <0x0b0b8000 0x1000>, <0xb008000 0x1000>;
                  };
  
-@@ -255,6 +265,12 @@
+@@ -278,6 +288,12 @@
                          regulator;
                  };
  

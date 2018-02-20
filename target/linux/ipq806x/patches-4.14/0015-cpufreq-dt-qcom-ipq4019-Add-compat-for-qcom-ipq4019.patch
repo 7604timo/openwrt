@@ -16,9 +16,9 @@ Signed-off-by: Matthew McClintock <mmcclint@codeaurora.org>
 
 --- a/drivers/cpufreq/cpufreq-dt-platdev.c
 +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
-@@ -35,6 +35,8 @@ static const struct of_device_id machine
- 
- 	{ .compatible = "marvell,berlin", },
+@@ -46,6 +46,8 @@ static const struct of_device_id whiteli
+ 	{ .compatible = "marvell,pxa250", },
+ 	{ .compatible = "marvell,pxa270", },
  
 +	{ .compatible = "qcom,ipq4019", },
 +

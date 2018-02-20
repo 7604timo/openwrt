@@ -11,9 +11,9 @@ Signed-off-by: Christian Lamparter <chunkeey@gmail.com>
 
 --- a/drivers/net/ethernet/qualcomm/Kconfig
 +++ b/drivers/net/ethernet/qualcomm/Kconfig
-@@ -37,4 +37,13 @@ config QCOM_EMAC
- 	  low power, Receive-Side Scaling (RSS), and IEEE 1588-2008
- 	  Precision Clock Synchronization Protocol.
+@@ -61,4 +61,13 @@ config QCOM_EMAC
+ 
+ source "drivers/net/ethernet/qualcomm/rmnet/Kconfig"
  
 +config ESSEDMA
 +	tristate "Qualcomm Atheros ESS Edma support"
@@ -27,11 +27,12 @@ Signed-off-by: Christian Lamparter <chunkeey@gmail.com>
  endif # NET_VENDOR_QUALCOMM
 --- a/drivers/net/ethernet/qualcomm/Makefile
 +++ b/drivers/net/ethernet/qualcomm/Makefile
-@@ -6,3 +6,4 @@ obj-$(CONFIG_QCA7000) += qcaspi.o
- qcaspi-objs := qca_spi.o qca_framing.o qca_7k.o qca_debug.o
+@@ -11,4 +11,5 @@ qcauart-objs := qca_uart.o
  
  obj-y += emac/
+ 
 +obj-$(CONFIG_ESSEDMA) += essedma/
+ obj-$(CONFIG_RMNET) += rmnet/
 --- /dev/null
 +++ b/drivers/net/ethernet/qualcomm/essedma/Makefile
 @@ -0,0 +1,9 @@

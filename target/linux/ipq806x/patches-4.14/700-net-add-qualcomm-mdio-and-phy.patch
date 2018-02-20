@@ -10,9 +10,9 @@ Subject: [PATCH 30/38] NET: add qualcomm mdio and PHY
 
 --- a/drivers/net/phy/Kconfig
 +++ b/drivers/net/phy/Kconfig
-@@ -408,6 +408,20 @@ config XILINX_GMII2RGMII
-          the Reduced Gigabit Media Independent Interface(RGMII) between
-          Ethernet physical media devices and the Gigabit Ethernet controller.
+@@ -481,6 +481,20 @@ config XILINX_GMII2RGMII
+ 	  the Reduced Gigabit Media Independent Interface(RGMII) between
+ 	  Ethernet physical media devices and the Gigabit Ethernet controller.
  
 +config MDIO_IPQ40XX
 +	tristate "Qualcomm Atheros ipq40xx MDIO interface"
@@ -33,15 +33,15 @@ Subject: [PATCH 30/38] NET: add qualcomm mdio and PHY
  config MICREL_KS8995MA
 --- a/drivers/net/phy/Makefile
 +++ b/drivers/net/phy/Makefile
-@@ -32,6 +32,7 @@ obj-$(CONFIG_MDIO_BUS_MUX_MMIOREG) += md
- obj-$(CONFIG_MDIO_CAVIUM)	+= mdio-cavium.o
+@@ -48,6 +48,7 @@ obj-$(CONFIG_MDIO_CAVIUM)	+= mdio-cavium
  obj-$(CONFIG_MDIO_GPIO)		+= mdio-gpio.o
  obj-$(CONFIG_MDIO_HISI_FEMAC)	+= mdio-hisi-femac.o
+ obj-$(CONFIG_MDIO_I2C)		+= mdio-i2c.o
 +obj-$(CONFIG_MDIO_IPQ40XX)	+= mdio-ipq40xx.o
  obj-$(CONFIG_MDIO_MOXART)	+= mdio-moxart.o
  obj-$(CONFIG_MDIO_OCTEON)	+= mdio-octeon.o
  obj-$(CONFIG_MDIO_SUN4I)	+= mdio-sun4i.o
-@@ -40,6 +41,7 @@ obj-$(CONFIG_MDIO_XGENE)	+= mdio-xgene.o
+@@ -60,6 +61,7 @@ obj-y				+= $(sfp-obj-y) $(sfp-obj-m)
  
  obj-$(CONFIG_AMD_PHY)		+= amd.o
  obj-$(CONFIG_AQUANTIA_PHY)	+= aquantia.o

@@ -18,15 +18,15 @@ Signed-off-by: Vasudevan Murugesan <vmuruges@codeaurora.org>
 
 --- a/drivers/usb/dwc3/dwc3-of-simple.c
 +++ b/drivers/usb/dwc3/dwc3-of-simple.c
-@@ -26,6 +26,7 @@
+@@ -25,6 +25,7 @@
+ #include <linux/platform_device.h>
  #include <linux/dma-mapping.h>
  #include <linux/clk.h>
- #include <linux/clk-provider.h>
 +#include <linux/reset.h>
  #include <linux/of.h>
  #include <linux/of_platform.h>
  #include <linux/pm_runtime.h>
-@@ -34,6 +35,8 @@ struct dwc3_of_simple {
+@@ -33,6 +34,8 @@ struct dwc3_of_simple {
  	struct device		*dev;
  	struct clk		**clks;
  	int			num_clocks;

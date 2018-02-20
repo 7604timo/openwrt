@@ -1,6 +1,6 @@
 --- a/arch/arm/boot/dts/qcom-ipq4019-ap.dk01.1.dtsi
 +++ b/arch/arm/boot/dts/qcom-ipq4019-ap.dk01.1.dtsi
-@@ -136,5 +136,29 @@
+@@ -148,5 +148,29 @@
  		usb2: usb2@60f8800 {
  			status = "ok";
  		};

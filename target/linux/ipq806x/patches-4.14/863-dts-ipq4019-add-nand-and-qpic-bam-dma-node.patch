@@ -120,9 +120,9 @@ Signed-off-by: Ram Chandra Jangir <rjangir@codeaurora.org>
  };
 --- a/arch/arm/boot/dts/qcom-ipq4019.dtsi
 +++ b/arch/arm/boot/dts/qcom-ipq4019.dtsi
-@@ -580,5 +580,43 @@
- 					  "legacy";
- 			status = "disabled";
+@@ -596,5 +596,43 @@
+ 				dr_mode = "host";
+ 			};
  		};
 +
 +		qpic_bam: dma@7984000 {
