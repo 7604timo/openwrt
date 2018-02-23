@@ -10,8 +10,6 @@ Signed-off-by: Luis Araneda <luaraneda@gmail.com>
  arch/arm/boot/dts/qcom-ipq8064-ap148.dts | 175 +++++++++++++++++++++++++++++--
  1 file changed, 164 insertions(+), 11 deletions(-)
 
-diff --git a/arch/arm/boot/dts/qcom-ipq8064-ap148.dts b/arch/arm/boot/dts/qcom-ipq8064-ap148.dts
-index bcf53e3..b94d2e8 100644
 --- a/arch/arm/boot/dts/qcom-ipq8064-ap148.dts
 +++ b/arch/arm/boot/dts/qcom-ipq8064-ap148.dts
 @@ -7,10 +7,16 @@
@@ -227,6 +225,3 @@ index bcf53e3..b94d2e8 100644
 +&adm_dma {
 +	status = "ok";
 +};
--- 
-2.16.1
-
