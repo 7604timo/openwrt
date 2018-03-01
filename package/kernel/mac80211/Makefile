@@ -988,9 +988,9 @@ IPW2100_NAME:=ipw2100-fw
 IPW2100_VERSION:=1.3
 
 define Download/ipw2100
-  URL:=http://bughost.org/firmware/
+  URL:=http://firmware.openbsd.org/firmware-dist/
   FILE:=$(IPW2100_NAME)-$(IPW2100_VERSION).tgz
-  HASH:=e1107c455e48d324a616b47a622593bc8413dcce72026f72731c0b03dae3a7a2
+  HASH:=6911f0ba9eace380c916e94f29e0d5be128970f31ea7c2febcdf31aeaeb12f14
 endef
 $(eval $(call Download,ipw2100))
 
@@ -1012,9 +1012,9 @@ IPW2200_NAME:=ipw2200-fw
 IPW2200_VERSION:=3.1
 
 define Download/ipw2200
-  URL:=http://bughost.org/firmware/
+  URL:=http://firmware.openbsd.org/firmware-dist/
   FILE:=$(IPW2200_NAME)-$(IPW2200_VERSION).tgz
-  HASH:=c6818c11c18cc030d55ff83f64b2bad8feef485e7742f84f94a61d811a6258bd
+  HASH:=42e315f0e211232389ba2c14638fc979c7017c4b4eb080bcec7442d8123ef4e0
 endef
 $(eval $(call Download,ipw2200))
 
