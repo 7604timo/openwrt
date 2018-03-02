@@ -282,10 +282,12 @@
 		
 		wifi@a000000 {
 			status = "okay";
+			qcom,ath10k-calibration-variant = "8devices-Jalapeno";
 		};
 
 		wifi@a800000 {
 			status = "okay";
+			qcom,ath10k-calibration-variant = "8devices-Jalapeno";
 		};
 	};
 };
