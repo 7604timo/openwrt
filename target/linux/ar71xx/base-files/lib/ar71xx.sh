@@ -682,6 +682,9 @@ ar71xx_board_detect() {
 	*"eTactica EG-200")
 		name="rme-eg200"
 		;;
+	*"EWS860AP")
+		name="ews860ap"
+		;;
 	*"FRITZ!WLAN Repeater 300E")
 		name="fritz300e"
 		;;
