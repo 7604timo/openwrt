@@ -40,3 +40,16 @@ define Device/ews860ap
   IMAGE/sysupgrade.bin := append-kernel | pad-to $$$$(KERNEL_SIZE) | append-rootfs | pad-rootfs | check-size $$$$(IMAGE_SIZE)
 endef
 TARGET_DEVICES += ews860ap
+
+define Device/enh1750ext
+  DEVICE_TITLE := Engenius ENH1750EXT
+  DEVICE_PACKAGES := kmod-ath10k ath10k-firmware-qca988x
+  BOARDNAME = ENH1750EXT
+  KERNEL_SIZE := 1536k
+  IMAGE_SIZE = 13120k
+  MTDPARTS = spi0.0:256k(u-boot)ro,64k(u-boot-env),320k(custom)ro,1536k(kernel),11584k(rootfs),2560k(failsafe)ro,64k(ART)ro,13120k@0xa0000(firmware)
+  IMAGES += factory.bin
+  IMAGE/factory.bin := append-rootfs | pad-rootfs | senao-factory-image enh1750ext
+  IMAGE/sysupgrade.bin := append-kernel | pad-to $$$$(KERNEL_SIZE) | append-rootfs | pad-rootfs | check-size $$$$(IMAGE_SIZE)
+endef
+TARGET_DEVICES += enh1750ext

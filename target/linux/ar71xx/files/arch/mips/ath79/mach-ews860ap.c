@@ -110,3 +110,6 @@ static void __init ews860ap_setup(void)
 
 MIPS_MACHINE(ATH79_MACH_EWS860AP, "EWS860AP",
 	"EnGenius EWS860AP", ews860ap_setup);
+
+MIPS_MACHINE(ATH79_MACH_ENH1750EXT, "ENH1750EXT",
+	"EnGenius ENH1750EXT", ews860ap_setup);

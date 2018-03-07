@@ -186,6 +186,7 @@ ar71xx_setup_interfaces()
 	all0315n|\
 	dlan-hotspot|\
 	dlan-pro-500-wp|\
+	enh1750ext|\
 	ens202ext|\
 	ews860ap|\
 	ja76pf2|\
