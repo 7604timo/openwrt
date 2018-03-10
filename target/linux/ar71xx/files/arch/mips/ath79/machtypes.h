@@ -182,6 +182,7 @@ enum ath79_mach_type {
 	ATH79_MACH_R602N,			/* P&W R602N */
 	ATH79_MACH_R6100,			/* NETGEAR R6100 */
 	ATH79_MACH_RAMBUTAN,			/* 8devices Rambutan */
+	ATH79_MACH_RAMBUTAN_I2C,		/* 8devices Rambutan-I2C */
 	ATH79_MACH_RB_2011G,			/* Mikrotik RouterBOARD 2011UAS-2HnD */
 	ATH79_MACH_RB_2011L,			/* Mikrotik RouterBOARD 2011L */
 	ATH79_MACH_RB_2011R5,			/* Mikrotik RouterBOARD 2011UiAS(-2Hnd) */

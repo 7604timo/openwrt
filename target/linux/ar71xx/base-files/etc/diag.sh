@@ -562,6 +562,9 @@ set_state() {
 		wi2a-ac200i)
 			fw_setenv PKRstCnt 0
 			;;
+		rambutan-i2c)
+			modprobe bmp280-i2c
+			;;
 		esac
 		;;
 	esac

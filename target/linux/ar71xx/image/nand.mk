@@ -84,6 +84,20 @@ define Device/rambutan
 endef
 TARGET_DEVICES += rambutan
 
+define Device/rambutan-i2c
+  DEVICE_TITLE := 8devices Rambutan-I2C
+  DEVICE_PACKAGES := kmod-usb-core kmod-usb2 kmod-i2c-gpio-custom kmod-iio-bmp280-i2c kmod-w1 kmod-w1-gpio-custom kmod-w1-slave-therm
+  BOARDNAME := RAMBUTAN-I2C
+  BLOCKSIZE := 128KiB
+  MTDPARTS := ar934x-nfc:3M(u-boot)ro,2M(u-boot-env),1M(art),122M(ubi)
+  PAGESIZE := 2048
+  KERNEL_IN_UBI := 1
+  IMAGES := factory.ubi sysupgrade.tar
+  IMAGE/sysupgrade.tar := sysupgrade-tar
+  IMAGE/factory.ubi := append-ubi
+endef
+TARGET_DEVICES += rambutan-i2c
+
 define Device/wi2a-ac200i
   SUPPORTED_DEVICES = $(1)
   DEVICE_TITLE := Nokia WI2A-AC200i

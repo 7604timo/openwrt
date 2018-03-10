@@ -552,6 +552,7 @@ platform_check_image() {
 	nbg6716|\
 	r6100|\
 	rambutan|\
+	rambutan-i2c|\
 	wi2a-ac200i|\
 	wndr3700v4|\
 	wndr4300)
@@ -809,6 +810,7 @@ platform_do_upgrade() {
 	nbg6716|\
 	r6100|\
 	rambutan|\
+	rambutan-i2c|\
 	rb-411|\
 	rb-411u|\
 	rb-433|\

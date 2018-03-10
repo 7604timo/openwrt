@@ -14,6 +14,9 @@
 #include <linux/platform_device.h>
 #include <linux/ath9k_platform.h>
 
+#include <linux/i2c.h>
+#include <linux/i2c-gpio.h>
+
 #include <asm/mach-ath79/ath79.h>
 #include <asm/mach-ath79/ar71xx_regs.h>
 #include <linux/platform/ar934x_nfc.h>
@@ -30,6 +33,29 @@
 #include "dev-wmac.h"
 #include "machtypes.h"
 #include "pci.h"
+
+
+#define RAMBUTAN_GPIO_I2C_SCL	22
+#define RAMBUTAN_GPIO_I2C_SDA	21
+
+static struct i2c_gpio_platform_data rambutan_i2c_gpio_data = {
+	.sda_pin	= RAMBUTAN_GPIO_I2C_SDA,
+	.scl_pin	= RAMBUTAN_GPIO_I2C_SCL,
+};
+
+static struct platform_device rambutan_i2c_gpio_device = {
+	.name		= "i2c-gpio",
+	.id		= 0,
+	.dev = {
+		.platform_data  = &rambutan_i2c_gpio_data,
+	}
+};
+
+static struct i2c_board_info tpm_i2c_info[] __initdata = {
+	{
+		I2C_BOARD_INFO("bme280", 0x76),
+	}
+};
 
 static struct at803x_platform_data rambutan_ar8032_data = {
 	.has_reset_gpio = 1,
@@ -85,6 +111,38 @@ static void __init rambutan_setup(void)
 	ath79_register_eth(1);
 }
 
+static void __init rambutan_i2c_setup(void)
+{
+	ath79_nfc_set_ecc_mode(AR934X_NFC_ECC_HW);
+	ath79_register_nfc();
+	ath79_register_usb();
+	ath79_register_pci();
+	ath79_register_wmac_simple();
+
+	mdiobus_register_board_info(rambutan_mdio0_info,
+				    ARRAY_SIZE(rambutan_mdio0_info));
+	mdiobus_register_board_info(rambutan_mdio1_info,
+				    ARRAY_SIZE(rambutan_mdio1_info));
+	platform_device_register(&rambutan_i2c_gpio_device);
+	i2c_register_board_info(0, tpm_i2c_info, ARRAY_SIZE(tpm_i2c_info));
+	ath79_register_mdio(0, 0x0);
+	ath79_register_mdio(1, 0x0);
+
+	ath79_eth0_data.phy_if_mode = PHY_INTERFACE_MODE_MII;
+	ath79_eth0_data.phy_mask = BIT(0);
+	ath79_eth0_data.mii_bus_dev = &ath79_mdio0_device.dev;
+	ath79_register_eth(0);
+
+	ath79_eth1_data.phy_if_mode = PHY_INTERFACE_MODE_SGMII;
+	ath79_eth1_data.phy_mask = BIT(0);
+	ath79_eth1_data.mii_bus_dev = &ath79_mdio1_device.dev;
+	ath79_eth1_pll_data.pll_1000 = 0x17000000;
+	ath79_eth1_pll_data.pll_10 = 0x1313;
+	ath79_register_eth(1);
+}
+
 MIPS_MACHINE(ATH79_MACH_RAMBUTAN, "RAMBUTAN", "8devices Rambutan board",
 	     rambutan_setup);
 
+MIPS_MACHINE(ATH79_MACH_RAMBUTAN_I2C, "RAMBUTAN-I2C", "8devices Rambutan board-I2C",
+	     rambutan_i2c_setup);
