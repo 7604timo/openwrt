@@ -193,7 +193,7 @@
 					#size-cells = <1>;
 
 					partition0@0 {
-						label = "ubi";
+						label = "kernel";
 						reg = <0x00000000 0x07000000>;
 					};
 					partition1@7000000 {
