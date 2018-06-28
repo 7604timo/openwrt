@@ -342,20 +342,89 @@
 			status = "okay";
 		};
 
-               edma@c080000 {
-                       compatible = "qca,qca8337";
-                       reg = <0xc080000 0x8000>;
+		mdio0: mdio {
+			compatible = "virtual,mdio-gpio";
+			#address-cells = <1>;
+			#size-cells = <0>;
+			gpios = <&qcom_pinmux 1 0 &qcom_pinmux 0 0>;
+			pinctrl-0 = <&mdio0_pins>;
+			pinctrl-names = "default";
 
-                       status = "okay";
+			phy_port1: phy@0 {
+				reg = <0>;
+			};
 
-                       gmac0: gmac0 {
-                               local-mac-address = [00 00 00 00 00 00];
-                       };
+			phy_port2: phy@1 {
+				reg = <1>;
+			};
 
-                       gmac1: gmac1 {
-                               local-mac-address = [00 00 00 00 00 00];
-                       };
-               };
+			phy_port3: phy@2 {
+				reg = <2>;
+			};
+
+			phy_port4: phy@3 {
+				reg = <3>;
+			};
+ 
+			phy_port5: phy@4 {
+				reg = <4>;
+			};
+
+			edma@c080000 {
+				compatible = "qca,qca8337";
+				#address-cells = <1>;
+				#size-cells = <0>;
+				reg = <16>;
+ 
+				ports {
+					#address-cells = <1>;
+					#size-cells = <0>;
+					port@0 {
+						reg = <0>;
+						label = "cpu";
+						ethernet = <&gmac1>;
+						phy-mode = "rgmii";
+ 
+						fixed-link {
+							speed = <1000>;
+							full-duplex;
+						};
+					};
+
+					port@1 {
+						reg = <1>;
+						label = "lan1";
+						phy-handle = <&phy_port1>;
+					};
+
+					port@2 {
+						reg = <2>;
+						label = "lan2";
+						phy-handle = <&phy_port2>;
+					};
+
+					port@3 {
+						reg = <3>;
+						label = "lan3";
+						phy-handle = <&phy_port3>;
+					};
+
+					port@4 {
+						reg = <4>;
+						label = "lan4";
+						phy-handle = <&phy_port4>;
+					};
+
+					port@5 {
+						reg = <5>;
+						label = "wan";
+						phy-handle = <&phy_port5>;
+					};
+ 
+				};
+			};
+		};
+
 
 		wifi@a000000 {
 			status = "okay";
